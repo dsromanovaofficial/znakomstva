@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta name="quiz-src" content="62efbcbcdffd9cdac572ab072abe5cda8f59d1507c5b72a4fd73356a9037ffc8">
+<meta name="quiz-src" content="8dca2a39f484e2ef8c718b37632012d880684891f845ce4306af56f8b620f22c">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Знакомства — подбор</title>
 <style>
@@ -1057,7 +1057,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .facts{display:flex;flex-wrap:wrap;gap:6px;margin:12px 16px 0}
 .facts span{background:var(--bg-default);border-radius:12px;padding:8px 12px;font-size:var(--fs-m)}
 .facts span.hit{background:var(--fg-primary);color:var(--fg-inverse);font-weight:700}
-.done{text-align:center;padding-top:120px}
+.done{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px 40px}
+.done .btn{margin-top:28px;width:100%}
 .done .iconbox{margin:0 auto 18px}
 .fade{animation:fade .25s ease}
 @keyframes fade{from{opacity:0}to{opacity:1}}      
@@ -1172,6 +1173,8 @@ html,body{background:#fff}
 .anab{margin-top:12px;background:var(--zn-ctl);border-radius:16px;padding:12px 16px;font-size:15px;line-height:20px}
 .anab small{display:block;font-size:13px;line-height:18px;color:var(--zn-sec);margin-bottom:2px}
 </style>
+<style>.pubnote{margin:14px auto 0;font-size:12px;line-height:16px;color:#8f8f8f;text-align:center;max-width:300px}#pw .bottom .pubnote{margin-top:6px;max-width:360px}</style>
+<link rel="icon" href="data:,">
 <style>@media (min-width:500px){html{background:#ebeae8;min-height:100%}body.app{min-height:100vh;box-sizing:border-box}}</style>
 </head>
 <body>
@@ -1477,10 +1480,10 @@ function noted(id, a) {
 const SEG_V14 = true;
 const V14 = {
   jobs: { F: ['F_J_REL', 'F_J_FAM', 'F_J_FRIENDS', 'F_J_SEX', 'F_J_CASUAL'], M: ['M_J_REL', 'M_J_FAM', 'M_J_FRIENDS', 'M_J_SEX', 'M_J_CASUAL'] },
-  name: { F_J_REL: 'Хочу найти своего человека', F_J_FAM: 'Хочу замуж и детей', F_J_FRIENDS: 'Хочу друзей и компанию, без романтики', F_J_SEX: 'Хочу секса без обязательств', F_J_CASUAL: 'Хочу просто ходить на свидания, без планов',
-    F_N_HEAL: 'Отхожу после расставания, развода или утраты', F_N_EX: 'Разбираюсь с бывшим: вернуть или отпустить', F_N_PAUSE: 'Устала искать, живу для себя', F_N_SELF: 'Сначала разберусь с собой', F_N_COUPLE: 'Я в отношениях и решаю, что с ними делать',
-    M_J_REL: 'Хочу найти своего человека', M_J_FAM: 'Хочу жениться и завести детей', M_J_FRIENDS: 'Хочу друзей и компанию, без романтики', M_J_SEX: 'Хочу секса без обязательств', M_J_CASUAL: 'Хочу просто ходить на свидания, без планов',
-    M_N_HEAL: 'Отхожу после расставания, развода или утраты', M_N_EX: 'Разбираюсь с бывшей: вернуть или отпустить', M_N_PAUSE: 'Устал искать, живу для себя', M_N_SELF: 'Сначала разберусь с собой', M_N_COUPLE: 'Я в отношениях и решаю, что с ними делать' },
+  name: { F_J_REL: '', F_J_FAM: '', F_J_FRIENDS: '', F_J_SEX: '', F_J_CASUAL: '',
+    F_N_HEAL: '', F_N_EX: '', F_N_PAUSE: '', F_N_SELF: '', F_N_COUPLE: '',
+    M_J_REL: '', M_J_FAM: '', M_J_FRIENDS: '', M_J_SEX: '', M_J_CASUAL: '',
+    M_N_HEAL: '', M_N_EX: '', M_N_PAUSE: '', M_N_SELF: '', M_N_COUPLE: '' },
   subs: { F_J_REL: ['C_SIGNALS', 'C_NOMATCH', 'C_LONELY', 'C_WHERE', 'C_CRITERIA', 'C_CHOOSE', 'C_STEP'], F_J_FAM: [], F_J_SEX: [], F_J_FRIENDS: [], F_J_CASUAL: [],
     M_J_REL: ['C_NOMATCH', 'C_WHERE', 'C_CRITERIA', 'C_STEP', 'C_SKILL', 'C_LONELY', 'C_SIGNALS'], M_J_FAM: ['C_CRITERIA'], M_J_SEX: [], M_J_FRIENDS: [], M_J_CASUAL: [] },
   subName: { C_SIGNALS: ['Не понимаю, есть ли у него интерес', 'Не понимаю, есть ли у неё интерес'], C_NOMATCH: 'Меня не выбирают: мало ответов, отказы', C_LONELY: ['Тяжело одной', 'Тяжело одному'], C_WHERE: 'Не знаю, где знакомиться', C_CRITERIA: ['Есть чёткие требования к партнёру', 'Есть чёткие требования к партнёрше'], C_CHOOSE: ['Не понимаю, подходит ли он мне', 'Не понимаю, подходит ли она мне'], C_STEP: 'Не решаюсь сделать первый шаг', C_SKILL: 'Не знаю, как знакомиться и о чём говорить', C_RESTART: 'Начинаю заново после развода или вдовства' },
@@ -1747,12 +1750,7 @@ function anketa(a) {
 }
 const DOUBT = {};
 const RANGE_TREE = { 'возраст любой': 'Диапазон, где есть люди младше 45', 'возраст от 45': 'Диапазон от 45 и старше' };
-function treeWalk() {
-  const out = [], rec = (a, steps) => { const qs = qsFor(a), i = steps.length; if (i >= qs.length) { out.push({ a, steps }); return; }
-    const q = qs[i], s = a.sex || 'F', ch = choices(q, a, s), title = q.title(s), ov = q.kind === 'range' ? [] : q.options(s).map(o => o[0]);
-    ch.forEach((c, i2) => { const k = q.kind === 'range' ? ['возраст любой', 'возраст от 45'].indexOf(c.lab) + 1 || 9 : i2 < ov.length ? ov[i2] : 'idk'; const b = JSON.parse(JSON.stringify(a)); c.f(b); rec(b, steps.concat({ id: q.id, title, lab: q.kind === 'range' ? (RANGE_TREE[c.lab] || c.lab) : c.lab, k, s: q.id === 'sex' ? b.sex : s })); setCtx(a); }); };
-  rec({}, []); setCtx({}); return out;
-}
+function treeWalk() { return []; }
 const TITLE_ORDER = ['Мужчин', 'Женщин', 'Друзей', 'Подруг', 'Хотите детей?', 'Как вам комфортнее знакомиться?'];
 const tOrd = t => { const i = TITLE_ORDER.findIndex(x => t.startsWith(x)); return i < 0 ? 99 : i; };
 function mergeTitles(L) {
@@ -1762,115 +1760,8 @@ function mergeTitles(L) {
 const sexLab = (F, M) => !M || F === M ? '«' + F + '»' : !F ? '«' + M + '»' : '«' + F + '» (мужчине «' + M + '»)';
 const GEN = v => v.replace(/Мужчины|Девушки|Женщины/g, '⟨кто⟩').replace(/него|неё/g, '⟨его⟩').replace(/всерьёз ли она|всерьёз ли он/g, 'всерьёз ли ⟨он⟩').replace(/Друзья|Подруги/g, '⟨друзья⟩');
 const ITEMS_KEY = v => v.split(' и ').sort().join(' и ');
-function condLinesFor(N, ids, T, ansLab) {
-  return function (label, rec, f, id) {
-    if (!rec.length) return [];
-    const key = r => f === 'items' ? ITEMS_KEY(GEN(r.v)) : GEN(r.v), by = new Map();
-    for (const r of rec) { const k = key(r); if (!by.has(k)) by.set(k, { v: r.v, rs: [] }); by.get(k).rs.push(r); }
-    const V = [...by.values()];
-    if (V.length === 1) return [label + ': ' + V[0].v];
-    const before = ids.slice(0, ids.indexOf(id)).reverse();
-    const ansAt = (r, p) => (r.pre.find(x => x.id === p) || {}).k;
-    const sep = ps => { const sets = V.map(x => new Set(x.rs.map(r => ps.map(p => ansAt(r, p)).join('|'))));
-      if (V.some(x => x.rs.some(r => ps.some(p => ansAt(r, p) === undefined)))) return null;
-      for (let i = 0; i < sets.length; i++) for (let j = i + 1; j < sets.length; j++) for (const z of sets[i]) if (sets[j].has(z)) return null;
-      return sets; };
-    const part = (p, k) => p === 'sex' ? (k === 'M' ? 'мужчине' : 'женщине') : 'в «' + T(p) + '» ответили ' + k;
-    let ps = null, sets = null;
-    for (const n of [1, 2, 3]) { const cmb = (L, m) => m === 0 ? [[]] : L.flatMap((x, i) => cmb(L.slice(i + 1), m - 1).map(r => [x, ...r]));
-      for (const c of cmb(before, n)) { const sx = sep(c); if (sx) { ps = c; sets = sx; break; } } if (ps) break; }
-    if (!ps) return null;
-    const seen = new Map(); for (const x of V) for (const r of x.rs) { const c = ps.map(p => ansAt(r, p)); ps.forEach((p, j) => { const ctx = j + ':' + c.filter((_, m) => m !== j).join('|'); (seen.get(ctx) || seen.set(ctx, new Set()).get(ctx)).add(c[j]); }); }
-    return V.map((x, i) => { const combos = [...sets[i]].map(z => z.split('|'));
-      const keep = ps.map((p, j) => combos.some(c => { const ctx = j + ':' + c.filter((_, m) => m !== j).join('|'); const all = seen.get(ctx); return [...all].some(v => !combos.some(d => d[j] === v && d.every((w, m) => m === j || w === c[m]))); }));
-      const txt = [...new Set(combos.map(c => { const sexP = ps.findIndex((p, j) => p === 'sex' && keep[j]);
-        const q = ps.map((p, j) => p !== 'sex' && keep[j] ? [p, c[j]] : null).filter(Boolean);
-        return q; }).map(JSON.stringify))].map(JSON.parse);
-      const byQ = new Map(); for (const q of txt) for (const [p, k] of q) { (byQ.get(p) || byQ.set(p, new Set()).get(p)).add(k); }
-      const sexes = ps.includes('sex') && keep[ps.indexOf('sex')] ? [...new Set(combos.map(c => c[ps.indexOf('sex')]))] : [];
-      const multi = txt.length > 1 && byQ.size > 1;
-      const s1 = multi ? txt.map(q => q.map(([p, k]) => part(p, ansLab(p, k))).join(' и ')).join('; или ') : [...byQ].map(([p, ks]) => part(p, [...ks].map(k => ansLab(p, k)).join(' или '))).join(' и ');
-      const s2 = sexes.length === 1 ? (sexes[0] === 'M' ? 'мужчине' : 'женщине') : '';
-      return label + ': ' + x.v + ' — ' + [s1 ? 'если ' + s1 : '', s2].filter(Boolean).join(', '); });
-  };
-}
-function tree() {
-  const W = treeWalk(), ord = QUESTIONS.map(q => q.id), N = {};
-  for (const w of W) w.steps.forEach((st, i) => {
-    const n = N[st.id] = N[st.id] || { id: st.id, titles: [], ans: new Map(), on: 0 };
-    n.titles.push(st.title); n.on++;
-    const A = n.ans.get(st.k) || { k: st.k, lab: {}, next: new Map(), ends: [] }; n.ans.set(st.k, A);
-    const l = st.lab.replace(/^.* \+ /, ''); A.lab[st.s] = A.lab[st.s] || l; (A.labs = A.labs || new Map()).set(l, (A.labs.get(l) || new Set()).add(st.s));
-    const nx = w.steps[i + 1]; A.next.set(nx ? nx.id : '', true); A.ends.push({ w, i });
-  });
-  const ids = ord.filter(id => N[id]);
-  const T = id => id ? mergeTitles(N[id].titles) : '';
-  const labOf = A => { const L = [...A.labs.keys()]; if (L.length === 2 && [...A.labs.values()].every(x => x.size === 1) && A.lab.F !== A.lab.M) return sexLab(A.lab.F, A.lab.M); return L.map(l => '«' + l + '»').join(' / '); };
-  const ansLab = (id, k) => labOf(N[id].ans.get(k));
-  const condLines = condLinesFor(N, ids, T, ansLab);
-  for (const id of ids) { const n = N[id], cond = [];
-    for (const p of ids) { if (p === id) break; const yes = new Set(), all = new Set();
-      for (const w of W) { const st = w.steps.find(x => x.id === p); if (!st) continue; all.add(st.k); if (w.steps.some(x => x.id === id)) yes.add(st.k); }
-      const no = [...all].filter(k => !yes.has(k)); if (!no.length || !yes.size) continue;
-      cond.push(no.length < yes.size ? 'в «' + T(p) + '» ответили не ' + no.map(k => ansLab(p, k)).join(' и не ') : 'в «' + T(p) + '» ответили ' + [...yes].map(k => ansLab(p, k)).join(' или ')); }
-    n.when = cond.length ? 'Если ' + cond.join(', и ') : 'Всем';
-    const TT = [...new Set(n.titles)].sort((x, y) => tOrd(x) - tOrd(y)); n.variants = [];
-    if (TT.length > 1) for (const t of TT) { for (const p of ids) { if (p === id) break; const yes = new Set(), no = new Set();
-        for (const w of W) { const st = w.steps.find(x => x.id === id), sp = w.steps.find(x => x.id === p); if (!st || !sp) continue; (st.title === t ? yes : no).add(sp.k); }
-        if (yes.size && [...yes].every(k => !no.has(k)) && no.size) { n.variants.push('«' + t + '», если в «' + T(p) + '» ответили ' + [...yes].map(k => ansLab(p, k)).join(' или ')); break; } } } }
-  const F = {
-    shown: ['В ленте', a => ({ M: 'мужчины', F: 'женщины' }[shownOf(a)])],
-    check: ['Строка проверки', a => '«' + VERIFY[shownOf(a)].t + '»'],
-    ages: ['Возраст в анкетах', a => { const g = deckAges(a, 3); return 'от ' + Math.min(...g) + ' до ' + Math.max(...g) + ', внутри выбранного «от и до»'; }],
-    title: ['«Бесплатно»', a => '«' + freeOffer14(a).title + '»'],
-    lead: ['Первым в Плюсе', a => { const b = plus14(a, 'free').benefits[0]; return '«' + b.t + '»: ' + b.d.charAt(0).toLowerCase() + b.d.slice(1); }],
-    items: ['«Бесплатно», пункты', a => freeOffer14(a).items.slice(1).map(i => '«' + i.t + '»').join(' и ')],
-    chips: ['В анкетах', a => anketa(a).chips],
-    about: ['В примере анкеты «Что для меня важно»', a => '«' + anketa(a).about + '»'],
-    sum: ['Итог перед лентой', a => summary(a)],
-  };
-  const order = A => [...N[A].ans.values()];
-  const ONLY = { sex: ['shown', 'check'], who: ['shown', 'check'], age: ['ages'] };
-  for (const id of ids) for (const A of N[id].ans.values()) {
-    const fx = [];
-    for (const [f, [label, fn]] of Object.entries(F)) {
-      if (id === 'age') continue;
-      if (ONLY[id] && !ONLY[id].includes(f)) continue; if (!ONLY[id] && ['shown', 'check', 'ages'].includes(f)) continue;
-      const groups = new Map();
-      for (const B of N[id].ans.values()) for (const { w, i } of B.ends) { if (id === 'sex' && w.a.goal === 'close') continue;
-        const pre = JSON.stringify(w.steps.slice(0, i).map(x => x.k)); const g = groups.get(pre) || new Map(); groups.set(pre, g); g.pre = w.steps.slice(0, i);
-        const v = fn(w.a), e = g.get(B.k) || { vals: new Set(), chips: [], sex: w.a.sex }; g.set(B.k, e); if (Array.isArray(v)) e.chips.push(v); else e.vals.add(v); }
-      const out = { F: new Set(), M: new Set() }, rec = [];
-      for (const g of groups.values()) { const me = g.get(A.k); if (!me) continue;
-        if (f === 'chips') { const has = c => me.chips.every(L => L.includes(c)); const mine = [...new Set(me.chips.flat())].filter(has);
-          for (const c of mine) if ([...g].some(([k, e]) => k !== A.k && !e.chips.some(L => L.includes(c)))) out[me.sex].add('«' + c + '»'); continue; }
-        if (me.vals.size !== 1) continue; let v = [...me.vals][0];
-        if (f === 'sum') { const oth = [...g].filter(([k]) => k !== A.k).flatMap(([, e]) => [...e.vals]); const base = oth.find(o => v.startsWith(o) && v.length > o.length); if (!base) continue; out[me.sex].add('«…' + v.slice(base.length).replace(/^,?\s*/, ' ') + '»'); continue; }
-        if ([...g].some(([k, e]) => k !== A.k && !(e.vals.size === 1 && e.vals.has(v)))) { out[me.sex].add(v); rec.push({ v, pre: g.pre }); } }
-      const Fv = [...out.F].join(', '), Mv = [...out.M].join(', ');
-      if (f === 'sum' && fx.length) continue;
-      if (f === 'sum' && (Fv || Mv)) { fx.push('Меняет только итог перед лентой: ' + [...new Set([...out.F, ...out.M])].join(' или ')); continue; }
-      if (f === 'chips' || id === 'sex') { if (Fv || Mv) fx.push(label + ': ' + (id === 'sex' ? (Fv || Mv) : !Mv || Fv === Mv ? Fv : !Fv ? Mv : Fv + ' (мужчине ' + Mv + ')')); continue; }
-      { const L = condLines(label, rec, f, id); if (L) fx.push(...L); else fx.push(label + ': как у выбранной цели и ответов выше' + (A.k === 'idk' ? ' (без этого ответа)' : '') + ' — ' + (n => n + (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? ' варианта' : ' вариантов'))(new Set(rec.map(r => GEN(f === 'items' ? ITEMS_KEY(r.v) : r.v))).size)); }
-    }
-    if (id === 'sex') fx.push('В дружбе кого показывать, решает ответ «Кого вам показывать?»');
-    if (id === 'age') { const ok = A.ends.every(({ w }) => deckAges(w.a, 3).every(x => x >= (w.a.ageMin || AGE_MIN) && (!w.a.ageMax || w.a.ageMax >= AGE_MAX || x <= w.a.ageMax)));
-      fx.push('Возраст всех анкет на «Бесплатно» и в ленте: ' + (A.k === 2 ? 'от 45 и старше' : A.k === 9 ? 'любой' : 'внутри выбранного «от и до»') + (ok ? '' : ' (НАРУШЕНО)')); }
-    { const nt = X => new Set(X.ends.map(({ w, i }) => (w.steps[i + 1] || {}).title || '')), mine = nt(A), ids0 = [...A.next.keys()].join('|');
-      const diff = [...N[id].ans.values()].some(B => B !== A && [...B.next.keys()].join('|') === ids0 && [...nt(B)].join('|') !== [...mine].join('|'));
-      if (diff) fx.push('Следующий вопрос: ' + [...mine].filter(Boolean).map(t => '«' + t + '»').join(' или ')); }
-    const qq = QUESTIONS.find(x => x.id === id);
-    if (qq && qq.allNote && qq.allNote[A.k]) fx.push(qq.allNote[A.k]);
-    if (!fx.length && A.k === 'idk' && qq && qq.idk && /покажем всех/i.test(qq.idk.d || '')) fx.push('Показываем всех: ' + qq.idk.d.charAt(0).toLowerCase() + qq.idk.d.slice(1));
-    if (!fx.length) fx.push('Экраны конца не меняет');
-    A.all = A.k === 'idk' || !!(qq && qq.allNote && qq.allNote[A.k]);
-    A.fx = fx;
-  }
-  return ids.map((id, i) => { const n = N[id], q = QUESTIONS.find(x => x.id === id);
-    return { n: i + 1, id, title: T(id), titles_all: [...new Set(n.titles)], variants: n.variants, when: n.when, paths: n.on, total: W.length, range: q.kind === 'range', doubt: DOUBT[id] || null,
-      answers: [...n.ans.values()].map(A => ({ lab: id === 'sex' ? '«' + A.lab[Object.keys(A.lab)[0]] + '»' : labOf(A),
-        next: [...A.next.keys()].map(x => x ? (ids.indexOf(x) + 1) + '. ' + T(x) : 'Конец: «Бесплатно», по кнопке Знакомства Плюс, под ним лента'), fx: A.fx, all: A.all, k: A.k })) }; });
-}
+function condLinesFor() { return []; }
+function tree() { return []; }
 function endings() {
   const by = new Map();
   for (const x of paths()) { const k = endKey(x.a); if (!by.has(k)) by.set(k, { key: k, a: x.a, path: x.path, paths: [] }); by.get(k).paths.push(x.path); }
@@ -1991,6 +1882,7 @@ const P = {
   qs() { if (Q.qsFor) return Q.qsFor(this.a);
     const a = this.a; if (Q.setCtx) Q.setCtx(a); if (Q.VISION) { const rest = a.goal === 'rest'; const serious = ['rel', 'family', undefined].includes(a.goal); return Q.QUESTIONS.filter(q => !(rest && ['when', 'must', 'barrier', 'kids'].includes(q.id)) && !(q.id === 'barrier' && (Q.NO_START || !serious)) && !(q.id === 'must' && Q.NO_MUST) && !(q.id === 'kids' && !serious) && !(q.id === 'when' && Q.kidsApply && serious)); } return Q.QUESTIONS; },
   render() {
+    this.rid = (this.rid || 0) + 1;
     const app = document.getElementById('app'), qs = this.qs();
     if (this.view === 'free') app.innerHTML = freeScreen(this.a);
     else if (this.view === 'feed') app.innerHTML = feedScreen(this.a) + '<div class="pw" id="pw"></div>';
@@ -2008,7 +1900,7 @@ const P = {
   rng(i, el) { const q = Q.QUESTIONS.find(x => x.id === 'age'), a = this.a; let lo = a.ageMin || q.def[0], hi = a.ageMax || q.def[1], v = +el.value;
     if (i) hi = Math.max(v, lo + 2); else lo = Math.min(v, hi - 2); el.value = i ? hi : lo; a.ageMin = lo; a.ageMax = hi;
     document.getElementById('rngv').textContent = this.rngTxt(lo, hi, q); document.getElementById('rngf').setAttribute('style', this.rngFill(lo, hi, q)); },
-  pick(id, v) { if (id === 'goal' && this.a.goal !== v) ['havekids', 'kids', 'must', 'when'].forEach(k => delete this.a[k]); this.a[id] = v; if (['kids', 'havekids'].includes(id) && Q.kidsApply) Q.kidsApply(this.a, v); if (Q.NO_WHEN && id === 'date') this.a.when = 'month'; this.render(); const w = this.flash(id); setTimeout(() => this.next(), w || 250); },
+  pick(id, v) { if (id === 'goal' && this.a.goal !== v) ['havekids', 'kids', 'must', 'when'].forEach(k => delete this.a[k]); this.a[id] = v; if (['kids', 'havekids'].includes(id) && Q.kidsApply) Q.kidsApply(this.a, v); if (Q.NO_WHEN && id === 'date') this.a.when = 'month'; this.render(); const r = this.rid, w = this.flash(id); setTimeout(() => { if (this.rid === r) this.next(); }, w || 250); },
   flag(k) { this.a[k] = !this.a[k]; this.render(); },
   none(id) { this.a[id] = []; this.next(); },
   multiTap(id, v, max) { let g = (this.a[id + 's'] || []).slice(); g = g.includes(v) ? g.filter(x => x !== v && !(v === 'rel' && x === 'family') && !(v === 'casual' && x === 'light')) : g.concat(v).slice(-max); this.a[id + 's'] = g; this.a[id] = g[0]; this.render(); },
@@ -2038,6 +1930,22 @@ P.toggle = function (id, v) { const q = Q.QUESTIONS.find(x => x.id === id); let 
 const SCEN = Q.endings ? Q.endings().map(e => ({ n: e.n, a: e.a, path: e.path, paths: e.paths.length, key: e.key })) : [];
 const SCEN_ALL = SCEN;
 document.body.className = 'app'; P.render(); window.QP = P;
+(function(){var NOTE="Прототип для исследования: оплаты нет, деньги не списываются",N18="Прототип для исследования · 18+";
+function note(where,txt,after){if(!where||where.parentNode.querySelector(':scope > .pubnote'))return;var d=document.createElement('div');d.className='pubnote';d.textContent=txt;if(after)where.after(d);else where.appendChild(d)}
+function deco(){var app=document.getElementById('app');if(!app)return;var first=!P.view&&P.i===0;
+ var bk=app.querySelector('.top .ic');if(bk)bk.style.visibility=first?'hidden':'';
+ if(first){var sc=app.querySelector('.qwrap .scroll')||app.querySelector('.scroll');if(sc&&!sc.querySelector('.pubnote'))note(sc.lastElementChild,N18,true)}
+ var pw=app.querySelector('#pw.open .bottom .small');if(pw)note(pw,NOTE,true);
+ var dn=app.querySelector('.done .sub');if(dn)note(dn,NOTE,true)}
+new MutationObserver(deco).observe(document.getElementById('app'),{childList:true,subtree:true,attributes:true,attributeFilter:['class']});deco();
+var a0=P.after.bind(P),b0=P.back.bind(P),pop=0;
+P.after=function(){try{history.pushState({q:P.i},'')}catch(e){}a0()};
+P.back=function(){if(!pop&&P.i>0&&!P.view){history.back();return}b0()};
+window.addEventListener('popstate',function(){var pwo=document.querySelector('#pw.open');
+ if(pwo&&P.closePw){P.closePw();history.pushState({q:'pw'},'');return}
+ if(P.view==='done'||P.view==='feed'){P.view='free';P.render();history.pushState({q:'end'},'');return}
+ if(P.view==='free'||P.view==='load'){P.view=undefined;P.i=Math.max(0,P.qs().length-1);P.render();return}
+ if(P.i>0){pop=1;b0();pop=0}})})();
 </script>
 </body>
 </html>
