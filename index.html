@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta name="quiz-src" content="8dca2a39f484e2ef8c718b37632012d880684891f845ce4306af56f8b620f22c">
+<meta name="quiz-src" content="76e257a464cf0d2935cd45baa9725d1dfd99f791f2e73f39d72c0ec465b1f4c2">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Знакомства — подбор</title>
 <style>
@@ -1486,7 +1486,7 @@ const V14 = {
     M_N_HEAL: '', M_N_EX: '', M_N_PAUSE: '', M_N_SELF: '', M_N_COUPLE: '' },
   subs: { F_J_REL: ['C_SIGNALS', 'C_NOMATCH', 'C_LONELY', 'C_WHERE', 'C_CRITERIA', 'C_CHOOSE', 'C_STEP'], F_J_FAM: [], F_J_SEX: [], F_J_FRIENDS: [], F_J_CASUAL: [],
     M_J_REL: ['C_NOMATCH', 'C_WHERE', 'C_CRITERIA', 'C_STEP', 'C_SKILL', 'C_LONELY', 'C_SIGNALS'], M_J_FAM: ['C_CRITERIA'], M_J_SEX: [], M_J_FRIENDS: [], M_J_CASUAL: [] },
-  subName: { C_SIGNALS: ['Не понимаю, есть ли у него интерес', 'Не понимаю, есть ли у неё интерес'], C_NOMATCH: 'Меня не выбирают: мало ответов, отказы', C_LONELY: ['Тяжело одной', 'Тяжело одному'], C_WHERE: 'Не знаю, где знакомиться', C_CRITERIA: ['Есть чёткие требования к партнёру', 'Есть чёткие требования к партнёрше'], C_CHOOSE: ['Не понимаю, подходит ли он мне', 'Не понимаю, подходит ли она мне'], C_STEP: 'Не решаюсь сделать первый шаг', C_SKILL: 'Не знаю, как знакомиться и о чём говорить', C_RESTART: 'Начинаю заново после развода или вдовства' },
+  subName: { C_SIGNALS: ['', ''], C_NOMATCH: '', C_LONELY: ['', ''], C_WHERE: '', C_CRITERIA: ['', ''], C_CHOOSE: ['', ''], C_STEP: '', C_SKILL: '', C_RESTART: '' },
   subOpt: { C_SIGNALS: 'Нравится человек, не знаю, взаимно ли', C_NOMATCH: 'Мне мало отвечают', C_LONELY: ['Устала быть одна', 'Устал быть один'], C_WHERE: 'Не знаю, где знакомиться', C_CRITERIA: 'Знаю, кто нужен, но не нахожу', C_CHOOSE: 'Не знаю, кто мне подходит', C_STEP: ['Не решаюсь написать первой', 'Не решаюсь написать первым'], C_SKILL: 'Не знаю, о чём говорить', C_RESTART: ['Отвыкла знакомиться после развода', 'Отвык знакомиться после развода'] },
   jobGrp: { J_REL: 'seek', J_FAM: 'family', J_FRIENDS: 'close', J_SEX: 'light', J_CASUAL: 'casual', N_HEAL: 'recent', N_EX: 'recent', N_PAUSE: 'rest', N_SELF: 'self', N_COUPLE: 'pair' },
   subGrp: { C_SIGNALS: 'liked', C_NOMATCH: 'learn', C_LONELY: 'close', C_WHERE: 'close', C_CRITERIA: 'family', C_CHOOSE: 'doubt', C_STEP: 'learn', C_SKILL: 'learn', C_RESTART: 'recent' },
@@ -1697,14 +1697,15 @@ const NO_WHEN = false;
 const AGE_TXT = { a18: '18-24', a25: '25-34', a35: '35-44', a45: '45-54', a55: '55+' };
 const GOAL_SUM = { family: 'тоже хотят семью', rel: 'тоже настроены всерьёз', light: 'тоже без обязательств', casual: 'тоже хотят просто ходить на свидания' };
 function summary(a) {
-  const lo = a.ageMin, hi = a.ageMax, full = !lo || (lo <= AGE_MIN && (!hi || hi >= AGE_MAX)), age = full ? '' : ' ' + lo + '-' + (hi >= AGE_MAX ? AGE_MAX + '+' : hi);
+  const lo = a.ageMin, hi = a.ageMax, full = !lo || (lo <= AGE_MIN && (!hi || hi >= AGE_MAX)), age = full ? '' : ' ' + (hi >= AGE_MAX ? lo + '+' : lo + '-' + hi);
   const sh = shownOf(a), fr = a.goal === 'close' && a.who, who = fr ? (sh === 'M' ? 'друзей' : 'подруг') : sh === 'F' ? ((lo || 0) >= 30 || (hi || 0) >= 40 ? 'женщин' : 'девушек') : 'мужчин';
   if (a.goal === 'close') return 'Ищем ' + who + age + ' для общения и дружбы';
   if (!GOAL_SUM[a.goal] && a.goal !== 'family') return 'Покажем ' + who + age + ' понемногу, торопить не будем';
   const fam = a.goal === 'family' || (a.goal === 'rel' && (a.must || []).includes('kids'));
-  const gl = GOAL_SUM[fam ? 'family' : a.goal] + (a.famLater && !fam ? ' и хотят семью' : '');
-  const extra = [(a.must || []).includes('mykids') ? 'ладят с детьми' : '', a.kids === 'notyet' ? 'пока не планируют детей' : ''].filter(Boolean);
-  return 'Ищем ' + who + age + ', которые ' + gl + (extra.length ? ' и ' + joinRu(extra) : '');
+  const my = (a.must || []).includes('mykids'), ny = a.kids === 'notyet';
+  const parts = [GOAL_SUM[fam ? 'family' : a.goal], a.famLater && !fam ? 'хотят семью' : '', my ? 'ладят с детьми' : '',
+    ny ? (fam ? (my ? 'не торопятся со своими' : 'не торопятся с детьми') : (my ? 'пока не планируют своих' : 'пока не планируют детей')) : ''].filter(Boolean);
+  return 'Ищем ' + who + age + ', которые ' + joinRu(parts);
 }
 const qsFor = a => { setCtx(a); const rest = a.goal === 'rest', serious = ['rel', 'family', undefined].includes(a.goal);
   return QUESTIONS.filter(q => !(rest && ['when', 'must', 'barrier', 'kids', 'havekids'].includes(q.id)) && !(q.id === 'barrier' && NO_START) && !(q.id === 'must' && NO_MUST) && !(q.id === 'who' && a.goal !== 'close') && !(['kids', 'havekids'].includes(q.id) && !serious) && !(q.id === 'kids' && QUIZ_CTX.noKids) && !(q.id === 'when' && ['family', undefined].includes(a.goal))); };
@@ -1912,7 +1913,8 @@ const P = {
     if (q && q.kind === 'many' && (this.a[q.id] || []).length) { const w = this.flash(q.id); if (w) return setTimeout(() => { this.i++; this.after(); }, w); }
     this.i++; this.after();
   },
-  after() { if (this.i >= this.qs().length) { this.view = 'load'; this.render(); setTimeout(() => { this.view = 'free'; this.render(); if (typeof window !== 'undefined' && window.QEND) window.QEND(this.a); }, Q.summary ? 2200 : 1100); } else this.render(); },
+  after() { if (this.a.sex && this.a.goal && Q.deck && typeof Image !== 'undefined') try { Q.deck(this.a, 3).forEach(d => { (new Image()).src = d.url; }); } catch (e) {}
+    if (this.i >= this.qs().length) { this.view = 'load'; this.render(); setTimeout(() => { this.view = 'free'; this.render(); if (typeof window !== 'undefined' && window.QEND) window.QEND(this.a); }, Q.summary ? 2200 : 1100); } else this.render(); },
   back() { if (this.i > 0) { this.i--; this.render(); } },
   feed() { this.view = 'feed'; this.render(); },
   openPw(entry) {
@@ -1938,14 +1940,14 @@ function deco(){var app=document.getElementById('app');if(!app)return;var first=
  var pw=app.querySelector('#pw.open .bottom .small');if(pw)note(pw,NOTE,true);
  var dn=app.querySelector('.done .sub');if(dn)note(dn,NOTE,true)}
 new MutationObserver(deco).observe(document.getElementById('app'),{childList:true,subtree:true,attributes:true,attributeFilter:['class']});deco();
-var a0=P.after.bind(P),b0=P.back.bind(P),pop=0;
-P.after=function(){try{history.pushState({q:P.i},'')}catch(e){}a0()};
+var a0=P.after.bind(P),b0=P.back.bind(P),pop=0,SID=Date.now()+''+Math.random();
+P.after=function(){try{history.pushState({q:P.i,s:SID},'')}catch(e){}a0()};
 P.back=function(){if(!pop&&P.i>0&&!P.view){history.back();return}b0()};
-window.addEventListener('popstate',function(){var pwo=document.querySelector('#pw.open');
+window.addEventListener('popstate',function(ev){var st=ev.state||{};if(st.s===SID&&typeof st.q==='number'&&st.q>P.i&&!P.view)return;var pwo=document.querySelector('#pw.open');
  if(pwo&&P.closePw){P.closePw();history.pushState({q:'pw'},'');return}
  if(P.view==='done'||P.view==='feed'){P.view='free';P.render();history.pushState({q:'end'},'');return}
  if(P.view==='free'||P.view==='load'){P.view=undefined;P.i=Math.max(0,P.qs().length-1);P.render();return}
- if(P.i>0){pop=1;b0();pop=0}})})();
+ if(P.i>0){pop=1;b0();pop=0}else if(st.s!==SID)history.back()})})();
 </script>
 </body>
 </html>
